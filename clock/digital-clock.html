@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: black;
+        color: white;
+      }
+      #clock {
+        width: 700px;
+        height: auto;
+        border: 3px solid rgb(79, 79, 205);
+        padding: 40px 60px;
+        margin: 200px auto 0;
+        font-size: 100px;
+        text-align: center;
+        border-top-right-radius: 1px;
+        border-bottom-left-radius: 1px;
+        border-bottom-right-radius: 45px;
+        border-top-left-radius: 35px;
+        box-shadow: 1px 1px 15px rgb(34, 19, 145),
+          0px 0px 25px rgb(182, 180, 197);
+      }
+    </style>
+  </head>
+  <body>
+    <p id="clock"></p>
+    <script>
+      let session = "AM";
+      setInterval(time_run, 1000);
+      function time_run() {
+        const time = new Date();
+
+        if (time.getHours() > 12) {
+          session = "PM";
+        } else {
+          session = "AM";
+        }
+        if (time.getHours() > 12){
+          time.getHours() -= 12
+        }
+        document.getElementById("clock").innerHTML =
+          time.getHours() +
+          ":" +
+          time.getMinutes() +
+          ":" +
+          time.getSeconds() +
+          "  " +
+          session;
+      }
+    </script>
+  </body>
+</html>
